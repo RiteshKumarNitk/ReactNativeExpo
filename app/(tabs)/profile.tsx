@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   View,
   Keyboard,
+  Button,
 } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
@@ -28,6 +29,20 @@ export default function profile() {
   const [upperCase, setUpperCase] = useState(true);
   const [symbols, setSymbols] = useState(true);
   const [numberCase, setNumberCase] = useState(true);
+  const [myname,setNewName]=useState("Rohit");
+  const [numberIncrese,increaseNumber] = useState(0);
+  const toggleName =()=>{
+    if (myname === "Rohit"){
+        setNewName("Ritesh KKr");
+    }
+    else{
+        setNewName("Rohit");
+    }
+  }
+
+  const badhao=()=>{
+    increaseNumber(numberIncrese+1);
+  }
 
   const genratedPasswordString = (passwordLength: number) => {
     let characterList = "";
@@ -80,6 +95,8 @@ export default function profile() {
     setSymbols(false);
     setNumberCase(false);
   };
+ 
+
 
   return (
     <ScrollView keyboardShouldPersistTaps="handled">
@@ -167,6 +184,14 @@ export default function profile() {
                   <Text style={styles.DarkButtonText}>Reset</Text>
                 </TouchableOpacity>
               </View>
+              <View style={styles.inputWrapper}>
+                <Text style={styles.DarkButtonText}>{myname} </Text>
+                <TouchableOpacity onPress={toggleName} style={styles.DarkButtonText}><Text style={styles.DarkButtonText}>Change</Text></TouchableOpacity>
+              </View>
+              <View style={styles.inputWrapper}>
+                <Text style={styles.DarkButtonText}>{numberIncrese} </Text>
+                <TouchableOpacity onPress={badhao} style={styles.DarkButtonText}><Text style={styles.DarkButtonText}>HSIPK1827C</Text></TouchableOpacity>
+              </View>
             </>
           )}
         </Formik>
@@ -184,113 +209,134 @@ export default function profile() {
   );
 }
 const styles = StyleSheet.create({
-  card: {
-    height:100,
-    width:500,
-    backgroundColor:"#F5F7F8",
-    flex:1,
-    alignItems:"center"
-  },
-  cardElevated: {
-    color: "red",
-  },
-  subTitle: {
-    color: "blue",
-
-  },
-  description: {
-    color: "red",
-  },
-  genratedPassword: {
-    display:'flex',
-    justifyContent:"center",
-    alignItems:'center',
-    fontSize:25
-  },
-  errorText: {
-    color: "red",
-  },
-
-  appContainer: {
-    flex: 1,
-    backgroundColor: "gray",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  primaryBtn: {
-    fontSize: 24,
-    backgroundColor: "green",
-    color: "black",
-
-    borderRadius: 15,
-  },
-  formContainer: {
-    flexDirection: "column",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 5,
-    margin: 40,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 20,
-    color: "#333",
-  },
-  inputStyle2: {
-    height: 40,
-    paddingHorizontal: 10,
-    fontSize: 12,
-    color: "#333",
-  },
-  inputWrapper: {
-    width: "100%",
-    marginBottom: 15,
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  heading: {
-    color: "#000",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 12,
-  },
-  inputStyle: {
-    height: 40,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    fontSize: 12,
-    color: "#333",
-  },
-  formAction: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20,
-  },
-  buttonText: {
-    fontSize: 18,
-    padding: 5,
-    color: "#fff",
-    fontWeight: "bold",
-  },
-  DarkButtonText: {
-    fontSize: 18,
-    backgroundColor: "gray",
-    padding: 5,
-    borderRadius: 15,
-    color: "#fff",
-    fontWeight: "bold",
-  },
-});
+    card: {
+      width: '90%', // Adjusted width to be more responsive
+      backgroundColor: "#F5F7F8",
+      alignItems: "center",
+      padding: 20,
+      borderRadius: 10,
+      marginVertical: 10,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    cardElevated: {
+      backgroundColor: "#fff", // Elevated cards should stand out
+      borderColor: "#ccc",
+      borderWidth: 1,
+    },
+    subTitle: {
+      color: "#1E3A8A", // Changed to a more readable dark blue
+      fontSize: 16,
+      fontWeight: "600",
+      marginBottom: 5,
+    },
+    description: {
+      color: "#64748B", // Softened the red to a subtle grayish-blue
+      fontSize: 14,
+      marginBottom: 10,
+    },
+    genratedPassword: {
+      fontSize: 20, // Reduced font size for better layout
+      fontWeight: "500",
+      color: "#000",
+      textAlign: "center",
+      letterSpacing: 1.2,
+    },
+    errorText: {
+      color: "#DC2626", // Changed to a more visually pleasing red
+      fontSize: 14,
+      marginVertical: 5,
+    },
+    appContainer: {
+      flex: 1,
+      backgroundColor: "#F3F4F6",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    primaryBtn: {
+      backgroundColor: "#22C55E", // Changed to a brighter green for better visibility
+      paddingVertical: 12,
+      paddingHorizontal: 25,
+      borderRadius: 8,
+      alignItems: "center",
+    },
+    formContainer: {
+      flexDirection: "column",
+      width: '100%',
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 20,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 12,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.15,
+      shadowRadius: 6,
+      elevation: 6,
+      marginVertical: 30,
+    },
+    title: {
+      fontSize: 20,
+      fontWeight: "bold",
+      color: "#1F2937", // Changed to a more readable dark color
+      marginBottom: 20,
+    },
+    inputStyle2: {
+      height: 40,
+      paddingHorizontal: 12,
+      fontSize: 14,
+      color: "#374151", // Adjusted to a readable dark gray
+      borderRadius: 8,
+      borderWidth: 1,
+      display:"flex",
+      justifyContent:"center",
+      borderColor: "#D1D5DB", // Light border color for better contrast
+    },
+    inputWrapper: {
+      width: "100%",
+      marginBottom: 20,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    heading: {
+      color: "#111827",
+      fontSize: 14,
+      fontWeight: "600",
+      textAlign: "center",
+    },
+    inputStyle: {
+      height: 44,
+      width:150,
+      borderColor: "#E5E7EB", // Softer border color for better aesthetics
+      borderWidth: 1,
+      borderRadius: 8,
+      paddingHorizontal: 12,
+      fontSize: 14,
+      color: "#4B5563", // Darker text color for better readability
+    },
+    formAction: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      marginTop: 25,
+      width: '100%',
+    },
+    buttonText: {
+      fontSize: 16,
+      color: "#FFFFFF", // Kept white for contrast
+      fontWeight: "bold",
+    },
+    DarkButtonText: {
+      backgroundColor: "#374151", // Changed to a consistent dark color
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 8,
+      color: "#FFFFFF",
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+  });
+  
